@@ -50,7 +50,7 @@
  * @access protected
  */
 
-    protected $_author_www = 'http://www.platron.ru/';
+    protected $_author_www = 'https://www.platron.ru/';
 
 /**
  * The status of the module
