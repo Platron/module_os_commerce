@@ -72,10 +72,6 @@ class platron extends \osCommerce\OM\Core\Site\Shop\PaymentModuleAbstract {
 		$confirmation = array();
 		$confirmation['fields'][] = array('title' => 'Пожалуста введите телефон в формате 7**********', 'field' => '<input type="text" name="cc_user_phone" value="'.$OSCOM_ShoppingCart->_billing_address['telephone'].'">');
 		$confirmation['fields'][] = array('title' => 'Пожалуста введите свой электронный адрес', 'field' => '<input type="text" name="cc_contact_email" value="'.$OSCOM_Customer->getEmailAddress().'">');
-	//      $confirmation['fields'][] = array('title' => 'Credit Card Owner:', 'field' => '<input type="text" name="cc_owner" value="'.$OSCOM_ShoppingCart->_billing_address['firstname'].' '.$OSCOM_ShoppingCart->_billing_address['lastname'].'" />');
-	//      $confirmation['fields'][] = array('title' => 'Credit Card Number:', 'field' => '<input type="text" name="cc_number_nh-dns" value="" />');
-	//      $confirmation['fields'][] = array('title' => 'Credit Card Expiry Date:', 'field' => $expires_month.'&nbsp;'.$expires_year);
-	//      $confirmation['fields'][] = array('title' => 'Card Verification Value (CVV2):', 'field' => '<input type="text" name="cc_cvc_nh-dns" value="" size="5" />');
 		return $confirmation;
 	}
 
@@ -151,11 +147,9 @@ class platron extends \osCommerce\OM\Core\Site\Shop\PaymentModuleAbstract {
 		  'pg_amount' => substr(round($amount* $currency_arr['value'],$currency_arr['decimal_places']), 0, 10),
 		  'pg_currency' => substr($OSCOM_Currencies->getCode(), 0, 3),
 		  'pg_lifetime' => MODULE_PAYMENT_PLATRON_TRANSACTION_LIFETIME,
-		  'pg_user_ip'	=> $_SERVER['REMOTE_ADDR'],
 		  'pg_description' => $description,
 		  'pg_user_phone' => $_POST['cc_user_phone'],
 		  'pg_user_contact_email' => $_POST['cc_contact_email'],
-		  'pg_user_ip' => $_SERVER['REMOTE_ADDR'],
 	  );
 
 	  if(defined('MODULE_PAYMENT_PLATRON_MERCHANT_CHECK_URL') && MODULE_PAYMENT_PLATRON_MERCHANT_CHECK_URL != "")
